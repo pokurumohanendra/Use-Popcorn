@@ -25,6 +25,7 @@ export default function StarRating({
   const [tempRating, setTempRating] = useState(0);
   function handleRating(rating) {
     setRating(rating);
+    onSetRating?.(rating);
   }
 
   return (
@@ -34,7 +35,7 @@ export default function StarRating({
           <Star
             key={i}
             full={tempRating ? tempRating >= i + 1 : rating >= i + 1}
-            onRate={() => setRating(i + 1)}
+            onRate={() => handleRating(i + 1)}
             // declares the selected star rating
             onHoverIn={() => setTempRating(i + 1)}
             onHoverOut={() => setTempRating(0)}

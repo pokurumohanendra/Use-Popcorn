@@ -84,8 +84,6 @@ function ErrorMessage({ message }) {
   );
 }
 function NavBar({ children }) {
-  const [query, setQuery] = useState("");
-
   return (
     <nav className="nav-bar">
       <Logo />
@@ -215,7 +213,6 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [userRating, setUserRating] = useState(0);
-  const isWatched = watched.map((movie) => movie.imdbID).includes(selectedId);
 
   const countRef = useRef(0);
 
@@ -239,7 +236,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     Genre: genre,
   } = movie;
 
-  const [avgRating, setAvgRating] = useState();
+  const [avgRating] = useState();
   function handleAdd() {
     const newWatchedMovie = {
       imdbID: selectedId,
